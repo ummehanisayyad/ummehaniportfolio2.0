@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ummehani | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #ff8a00;
+    }
+
+    .header-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.background-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* makes them not clickable */
+  z-index: 0;
+}
+
+.bg-img {
+  position: absolute;
+  opacity: 0.3;
+  width:1600px;
+  height: 820px;
+  animation: float 10s infinite ease-in-out;
+}
+
+
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+    nav a {
+      color: #fff;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #ff8a00, #e52e71);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+    .myself {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle, #1c1c1c, #0f2027);
+      text-align: center;
+      padding: 2rem;
+    }
+    .myself h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      -webkit-background-clip : text;
+      -webkit-text-fill-color: transparent;
+      animation: typing 3s steps(30) 1 normal both;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #ff6a00;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .myself p {
+      font-size: 1.3rem;
+      color: #ccc;
+      margin-top: 1rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .section {
+      padding: 4rem 2rem;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section p {
+      text-align: center;
+      max-width: 700px;
+      margin: auto;
+      color: #bbb;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: linear-gradient(to bottom, #2a2a72, #009ffd);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .card h3 {
+      color: #ffdd00;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .card p {
+      color: #f0f0f0;
+      position: relative;
+      z-index: 1;
+    }
+    .documentation {
+      display: none;
+      margin-top: 1rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      color: #eee;
+    }
+    .card.active .documentation {
+      display: block;
+    }
+    #contact a {
+      color: #ffaa00;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+    }
+    /* Contact Section */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px #ffffff
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 2rem;
+}
+
+.icon {
+  font-size: 2.2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #141e30;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom platform colors */
+.insta:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: white;
+}
+
+.linkedin:hover {
+  background: #0077b5;
+  color: white;
+}
+
+.github:hover {
+  background: #000;
+  color: white;
+}
+
+
+
+
+    footer {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Portfolio</h1>
+    <nav>
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#modules" class="nav-link">Modules</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <div class="header-container">
+    <div class="background-images">
+    <img src="https://i.pinimg.com/736x/af/db/95/afdb95b26ba824cc7c7be986a4507cfc.jpg" alt="img" class="bg-img">
+      
+    
+  </div>
+  
+
+  <section class="myself">
+    <h1>Hi, I'm Ummehani.</h1>
+    <p>Web Development Explorer| Digital Fabrication Lab | Passionate Innovator</p>
+  </section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I’m a first-year Computer Science Engineering student at Sant Gajanan Maharaj College of Engineering, Shegaon with a strong interest in  web development. I'm passionate about exploring the intersection of hardware and software, and I love building creative, tech-driven projects. 
+    </p>
+  </section>
+
+  <!--project-->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Interactive Portfolio</h3>
+        <p>Built with HTML, CSS, and JS, this animated portfolio highlights creativity and clean design.</p>
+      </div>
+      <div class="card">
+        <h3>Quiz App</h3>
+        <p> An interactive web application designed to test knowledge through multiple-choice questions. Built using HTML, CSS, JavaScript. </p>
+      </div>
+    </div>
+  </section>
+
+  <!--fablab module-->
+
+  <section id="fablabintro" class="section">
+    <h2>FABLAB Module – A Blend of Tech & Creativity</h2>
+    <p>Joining the FABLAB was my gateway into hands-on innovation. It wasn’t just a lab; it was a playground of possibilities where ideas turned into prototypes. From designing in CAD to watching my creations come alive through 3D printing and electronics, the FABLAB became the perfect space to blend engineering, creativity, and curiosity. Every session pushed me to think, build, fail, and improve — and that’s where real learning happens. </p>
+  </section>
+
+  <section id="fablab" class="section">
+    <h2>FABLAB Modules</h2>
+    <p>Explore a wide range of technical and creative modules designed to upskill you for the future:</p>
+    <div class="projects">
+      <div class="card" onclick="this.classList.toggle('active')">
+        <h3>Web Development</h3>
+        <p>Learn to build interactive, responsive websites using HTML, CSS, JS and frameworks.</p>
+
+        <a href="webdev.html" class="module-link">
+          <div class="module-card">
+            <p>Click to view 7-day documentation</p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="card">
+        <h3>CAD / CAT</h3>
+        <p>Get hands-on with design software like AutoCAD, Fusion360, and CATIA for mechanical design.</p>
+      </div>
+      <div class="card">
+        <h3>3D Printing</h3>
+        <p>Prototype physical objects using FDM/Resin 3D printing with slicing and modeling techniques.</p>
+      </div>
+      <div class="card">
+        <h3>PCB Design</h3>
+        <p>Design, simulate, and fabricate circuit boards with software like KiCad and EasyEDA.</p>
+      </div>
+      <div class="card">
+        <h3>IoT & Embedded Systems</h3>
+        <p>Connect sensors and microcontrollers like Arduino and ESP32 to create smart devices.</p>
+      </div>
+      <div class="card">
+        <h3>Java Programming</h3>
+        <p>Master object-oriented programming and data structures using Java.</p>
+      </div>
+      <div class="card">
+        <h3>Cybersecurity</h3>
+        <p>Understand the basics of ethical hacking, encryption, and securing systems from threats.</p>
+      </div>
+      <div class="card">
+        <h3>AI & ML</h3>
+        <p>Explore machine learning models, AI concepts, and data training using Python libraries.</p>
+      </div>
+    </div>
+  </section>
+
+  
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <div class="contact-container">
+          <div class="contact-info fade-in">
+              <h3>Contact Information</h3>
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>
+                      <h4>Location</h4>
+                      <p>Shegaon</p>
+                  </div>
+              </div>
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>
+                      <h4>Email</h4>
+                      <p>sayyadummehani32@gmail.com</p>
+                  </div>
+              </div>
+              <div class="contact-item">
+                  <div class="contact-icon">
+                      <i class="fas fa-phone"></i>
+                  </div>
+                  <div>
+                      <h4>Phone</h4>
+                      <p>9970845890</p>
+                  </div>
+              </div>
+          </div>
+          <div class="contact-form fade-in">
+              <form id="contactForm">
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                  </div>
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group">
+                      <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                  </div>
+                  <button type="submit" class="btn">Send Message</button>
+              </form>
+          </div>
+      </div>
+
+      <div class="social-icons">
+        
+        <i class="fa fa-instagram">
+      <a href="mailto:sayyadummehani32@gmail.com"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGKE_gFic44FHMcNDN3mazBh3PCj-r0ws6Ig&s" width="40" height="40"></a>
+      </i>
+
+      <a href="https://www.instagram.com/ummehani_sayyad_166?utm_source=qr&igsh=bXRkeGZkcGI0Nmo1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR3uuo06AK2nZNZY3y7yRZ-9noMp-q7hRNag&s" width="40" height="40"></a>
+
+      <a href="https://www.linkedin.com/in/ummehani-sayyad-42a4a0332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRokEYt0yyh6uNDKL8uksVLlhZ35laKNQgZ9g&s" width="40" height="40"></a>
+
+
+      </div>
+      
+  </section>
+
+
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+</body>
+</html>
